@@ -1,0 +1,20 @@
+name: Manual Trigger
+
+on:
+  workflow_call:
+    inputs:
+      service_name:
+        required: true
+        type: string
+      
+
+jobs:
+  manual_trigger:
+    runs-on: ubuntu-latest
+    environment: manual-action
+    steps:
+    - name: Pause for manual approval
+      run: |
+        echo "The deployment is paused. \
+        Please approve it in the GitHub Actions tab for \
+        service: ${{ inputs.service_name }}, commit: ${GITHUB_BASE_REF}."

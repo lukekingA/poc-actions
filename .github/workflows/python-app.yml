@@ -42,7 +42,6 @@ jobs:
     needs: test
     with:
       service_name: $SERVICE_NAME
-      # required_job_name: test
 
   build:
     runs-on: ubuntu-latest
