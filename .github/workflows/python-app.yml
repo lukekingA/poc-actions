@@ -41,7 +41,7 @@ jobs:
     uses: ./.github/workflows/pause.yml
     with:
       service_name: $SERVICE_NAME
-      needs: test
+      required-job-name: test
 
   build:
     runs-on: ubuntu-latest
