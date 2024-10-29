@@ -71,6 +71,6 @@ jobs:
       with:
         context: .
         push: true
-        tags: 
+        tags:
           - ${{ secrets.DOCKER_USERNAME }}/my_python_project:${{ env.sha_short }}
           - ${{ secrets.DOCKER_USERNAME }}/my_python_project:latest
