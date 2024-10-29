@@ -47,6 +47,12 @@ jobs:
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
 
+    - name: Echo Commit SHA
+      run: |
+        echo "=============================="
+        echo "GITHUB_SHA: $GITHUB_SHA"
+        echo "=============================="
+
     - name: Build and push Docker image
       uses: docker/build-push-action@v5
       with:
