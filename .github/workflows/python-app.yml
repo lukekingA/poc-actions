@@ -38,16 +38,10 @@ jobs:
         echo "Well I would run tests here but they don't work for service: ${SERVICE_NAME}, commit: ${GITHUB_BASE_REF}"
 
   pause:
-    runs-on: ubuntu-latest
+    uses: ./.github/workflows/manual_trigger.yml
     needs: test
-    if: success()
-    environment: manual-action
-    steps:
-    - name: Pause for manual approval
-      run: |
-        echo "The deployment is paused. \
-        Please approve it in the GitHub Actions tab for \
-        service: ${SERVICE_NAME}, commit: ${GITHUB_REF}."
+    with:
+      service_name: $SERVICE_NAME
 
   build:
     runs-on: ubuntu-latest
