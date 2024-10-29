@@ -2,13 +2,12 @@ name: Python package
 
 on:
   push:
+    branches:
+      - main
   pull_request:
     branches:
       - main
  
-
-
-
 env:
   SERVICE_NAME: my-service
 
@@ -55,7 +54,7 @@ jobs:
     needs: pause
     steps:
     - name: Checkout code
-      uses: actions/checkout@v2
+      uses: actions/checkout@v4
 
     - name: Set up Docker Buildx
       uses: docker/setup-buildx-action@v2
