@@ -33,12 +33,15 @@ jobs:
 
   pause:
     runs-on: ubuntu-latest
+    needs: test
     if: success()
     environment: manual-action
     steps:
     - name: Pause for manual approval
       run: |
-        echo "The deployment is paused. Please approve it in the GitHub Actions tab for service: ${SERVICE_NAME}, commit: ${GITHUB_REF}."
+        echo "The deployment is paused. \
+        Please approve it in the GitHub Actions tab for \
+        service: ${SERVICE_NAME}, commit: ${GITHUB_REF}."
 
   build:
     runs-on: ubuntu-latest
