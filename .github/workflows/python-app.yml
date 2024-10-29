@@ -47,10 +47,12 @@ jobs:
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
 
-    - name: Echo Commit SHA
+    - name: Short Commit SHA
       run: |
         echo "=============================="
         echo "GITHUB_SHA: $GITHUB_SHA"
+        echo $(git rev-parse --short HEAD) 
+        echo "sha_short=$(git rev-parse --short HEAD)" >> $GITHUB_ENV
         echo "=============================="
 
     - name: Build and push Docker image
@@ -58,4 +60,4 @@ jobs:
       with:
         context: .
         push: true
-        tags: ${{ secrets.DOCKER_USERNAME }}/my_python_project:$GITHUB_SHA,latest
+        tags: ${{ secrets.DOCKER_USERNAME }}/my_python_project:${{ env.short_sha }},latest
