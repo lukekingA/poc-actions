@@ -26,7 +26,8 @@ jobs:
         ls -la
         ls -la tests
         # python -m unittest discover tests
-        echo "Well I would run tests here but they don't work for repo ${{GITHUB_REPOSITORY##*/}}, commit: ${{GITHUB_SHA}}"
+        REPO=${{GITHUB_REPOSITORY}}
+        echo "Well I would run tests here but they don't work for repo ${REPO##*/}, commit: ${{GITHUB_SHA}}"
 
   build:
     runs-on: ubuntu-latest
