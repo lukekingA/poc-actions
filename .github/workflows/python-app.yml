@@ -1,6 +1,13 @@
 name: Python package
 
-on: [push]
+on:
+  push:
+  pull_request:
+    branches:
+      - main
+ 
+
+
 
 env:
   SERVICE_NAME: my-service
@@ -29,7 +36,7 @@ jobs:
         ls -la
         ls -la tests
         # python -m unittest discover tests
-        echo "Well I would run tests here but they don't work for service: ${SERVICE_NAME}, commit: ${GITHUB_REF}"
+        echo "Well I would run tests here but they don't work for service: ${SERVICE_NAME}, commit: ${GITHUB_BASE_REF}"
 
   pause:
     runs-on: ubuntu-latest
