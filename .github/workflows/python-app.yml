@@ -54,7 +54,7 @@ jobs:
         echo $(git rev-parse --short HEAD) 
 
         echo "sha_short=$(git rev-parse --short HEAD)" >> $GITHUB_ENV
-        echo "${{ GITHUB_ENV }}"
+        echo "$GITHUB_ENV"
         echo "=============================="
 
     - name: Build and push Docker image
