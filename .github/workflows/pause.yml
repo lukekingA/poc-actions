@@ -6,12 +6,15 @@ on:
       service_name:
         required: true
         type: string
+      needs:
+        required: true
+        type: string
       
 
 jobs:
-  pause:
+  manual-action:
     runs-on: ubuntu-latest
-    needs: test
+    needs: ${{ inputs.needs }}
     if: success()
     environment: manual-action
     steps:
