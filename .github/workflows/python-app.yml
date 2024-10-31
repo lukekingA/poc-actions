@@ -40,13 +40,13 @@ jobs:
         # echo "Well I would run tests here but they don't work for service: ${SERVICE_NAME}, commit: ${GITHUB_BASE_REF}"
 
   pause:
+    if: github.event.pull_request.merged == true
     uses: ./.github/workflows/manual_trigger.yml
     needs: test
     with:
       service_name: $SERVICE_NAME
 
   build:
-    if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
     needs: pause
     steps:
