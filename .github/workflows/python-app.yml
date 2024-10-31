@@ -13,7 +13,6 @@ env:
 
 jobs:
   test:
-    if: ${{ github.event_name }} == workflow_dispatch
     runs-on: ubuntu-latest
 
     steps:
@@ -38,6 +37,7 @@ jobs:
         # echo "Well I would run tests here but they don't work for service: ${SERVICE_NAME}, commit: ${GITHUB_BASE_REF}"
 
   pause:
+    if: github.event.pull_request.merged == true
     uses: ./.github/workflows/manual_trigger.yml
     needs: test
     with:
@@ -76,3 +76,5 @@ jobs:
         tags: > 
           ${{ secrets.DOCKER_USERNAME }}/my_python_project:${{ env.sha_short }},
           ${{ secrets.DOCKER_USERNAME }}/my_python_project:latest
+
+  
