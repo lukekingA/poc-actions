@@ -2,11 +2,13 @@ name: Python package
 
 on:
   push:
-    branches:
+    branches-ignore:
       - main
   pull_request:
     branches:
       - main
+    types:
+      - closed
  
 env:
   SERVICE_NAME: my-service
